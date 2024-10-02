@@ -1,0 +1,26 @@
+site_name: Plotly Libraries
+site_description: Documentation for Plotly libraries
+site_url: https://example.com
+copyright: Plotly Inc.
+
+nav:
+  - Home: index.md
+  - About: about.md
+
+plugins:
+  - rss:
+      date_from_meta:
+        as_creation: "date"
+        datetime_format: "%Y-%m-%dT%H:%M:%S"
+      json_feed_enabled: true
+      rss_feed_enabled: false
+      feeds_filenames:
+        json_created: feed_json_updated.json
+      match_path: "blog/.*"
+      use_git: false
+
+docs_dir: src
+site_dir: docs
+theme:
+  name: null
+  custom_dir: theme
