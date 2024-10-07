@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+    <title>{% if page.title %}{{ page.title }} - {% endif %}{{ config.site_name }}</title>
+    {%- for path in config.extra_css %}
+      <link href="{{ path | url }}" rel="stylesheet">
+    {%- endfor %}
+  </head>
+  <body>
+    {{ page.content }}
+
+    {%- for script in config.extra_javascript %}
+      {{ script | script_tag }}
+    {%- endfor %}
+  </body>
+</html>

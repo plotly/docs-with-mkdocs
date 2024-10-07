@@ -1,0 +1,287 @@
+<!--
+
+{% set post_array = [] %}
+{% set split_page = 'FIXME' %}
+{% set link = 'FIXME' %}
+{% for post in [] %} <!-- FIXME -->
+{% set split_post = post.language + "/" %}
+{% set link_post = post.permalink.split(split_post)[-1] %}
+{% if '/reference' in post.permalink or '/next' in post.permalink or '/v3' in post.permalink or 'nodejs/' in post.permalink or 'javascript/' in post.permalink or 'scala/' in post.permalink %}
+{% else %}
+{% if link == link_post or page.name == post.name %}
+{% set post_array = post_array + [post] %}
+{% endif %}
+{% endif %}
+{% endfor %}
+{% if False %} <!-- FIXME -->
+<div class="db-client-lib">
+  <label>
+    This page in another language
+  </label>
+  <div class="list-lib-wrap">
+    <div class="list-lib">
+      {% for item in post_array%}
+      {% if item.permalink == page.permalink %}
+      <a href=" {{ site.url }}/{{item.permalink }}" class="current list-lib-item {{item.language }}">
+        {% else %}
+        <a href=" {{ site.url }}/{{item.permalink }}" class="list-lib-item {{item.language }}">
+          {% endif %}
+          <div class="item-icon">
+          </div>
+          <p class="item-language">
+            {% if item.language == "julia" %}
+            Julia
+            {% elif item.language == "python" %}
+            Python
+            {% elif item.language == "r" %}
+            R
+            {% elif item.language == "python" %}
+            Python
+            {% elif item.language == "matlab" %}
+            MATLAB®
+            {% elif item.language == "ggplot2" %}
+            ggplot2
+            {% elif item.language == "fsharp" %}
+            F#
+            {% elif item.language == "csharp" %}
+            C#
+            {% else %}
+            {{item.language}}
+            {% endif %}
+          </p>
+        </a>
+        {% endfor %}
+        {% if page.name == "Scatter Plots" %}
+        <a target="_blank" href="https://plotly.com/chart-studio-help/make-a-line-and-scatter-plot/" class="list-lib-item studio">
+          <div class="item-icon">
+          </div>
+          <p class="item-language">
+            Studio
+          </p>
+        </a>
+        {% elif page.name == "Line Charts" %}
+        <a target="_blank" href="https://plotly.com/chart-studio-help/make-a-line-graph/" class="list-lib-item studio">
+          <div class="item-icon">
+          </div>
+          <p class="item-language">
+            Studio
+          </p>
+        </a>
+        {% elif page.name == "OHLC Plots" %}
+        <a target="_blank" href="https://plotly.com/chart-studio-help/make-a-line-graph/" class="list-lib-item studio">
+          <div class="item-icon">
+          </div>
+          <p class="item-language">
+            Studio
+          </p>
+        </a>
+        {% elif page.name == "Bar Charts" %}
+        <a target="_blank" href="https://plotly.com/chart-studio-help/grouped-bar-chart/" class="list-lib-item studio">
+          <div class="item-icon">
+          </div>
+          <p class="item-language">
+            Studio
+          </p>
+        </a>
+        {% elif page.name == "Horizontal Bar Charts" %}
+        <a target="_blank" href="https://plotly.com/chart-studio-help/horizontal-bar-chart/" class="list-lib-item studio">
+          <div class="item-icon">
+          </div>
+          <p class="item-language">
+            Studio
+          </p>
+        </a>
+        {% elif page.name == "Bubble Charts" %}
+        <a target="_blank" href="https://plotly.com/chart-studio-help/make-a-bubble-chart/" class="list-lib-item studio">
+          <div class="item-icon">
+          </div>
+          <p class="item-language">
+            Studio
+          </p>
+        </a>
+        {% elif page.name == "Pie Charts" %}
+        <a target="_blank" href="https://plotly.com/chart-studio-help/make-a-pie-chart/" class="list-lib-item studio">
+          <div class="item-icon">
+          </div>
+          <p class="item-language">
+            Studio
+          </p>
+        </a>
+        {% elif page.name == "Filled Area Plots" %}
+        <a target="_blank" href="https://plotly.com/chart-studio-help/make-an-area-graph/" class="list-lib-item studio">
+          <div class="item-icon">
+          </div>
+          <p class="item-language">
+            Studio
+          </p>
+        </a>
+        {% elif page.name == "Tables" %}
+        <a target="_blank" href="https://plotly.com/chart-studio-help/make-a-table/" class="list-lib-item studio">
+          <div class="item-icon">
+          </div>
+          <p class="item-language">
+            Studio
+          </p>
+        </a>
+        {% elif page.name == "Histograms" %}
+        <a target="_blank" href="https://plotly.com/chart-studio-help/make-a-histogram/" class="list-lib-item studio">
+          <div class="item-icon">
+          </div>
+          <p class="item-language">
+            Studio
+          </p>
+        </a>
+        {% elif page.name == "2D Histograms" %}
+        <a target="_blank" href="https://plotly.com/chart-studio-help/make-a-2d-histogram-heatmap/" class="list-lib-item studio">
+          <div class="item-icon">
+          </div>
+          <p class="item-language">
+            Studio
+          </p>
+        </a>
+        {% elif page.name == "2D Histogram Contour" %}
+        <a target="_blank" href="https://plotly.com/chart-studio-help/make-a-2d-histogram-contour-plot/" class="list-lib-item studio">
+          <div class="item-icon">
+          </div>
+          <p class="item-language">
+            Studio
+          </p>
+        </a>
+        {% elif page.name == "Violin Plots" %}
+        <a target="_blank" href="https://plotly.com/chart-studio-help/make-a-violin-plot/" class="list-lib-item studio">
+          <div class="item-icon">
+          </div>
+          <p class="item-language">
+            Studio
+          </p>
+        </a>
+        {% elif page.name == "Box Plots" %}
+        <a target="_blank" href="https://plotly.com/chart-studio-help/make-a-box-plot/" class="list-lib-item studio">
+          <div class="item-icon">
+          </div>
+          <p class="item-language">
+            Studio
+          </p>
+        </a>
+
+        {% elif page.name == "Choropleth Maps" %}
+        <a target="_blank" href="https://plotly.com/chart-studio-help/make-a-choropleth-map/" class="list-lib-item studio">
+          <div class="item-icon">
+          </div>
+          <p class="item-language">
+            Studio
+          </p>
+        </a>
+        {% elif page.name == "Scatter Plots on Mapbox" %}
+        <a target="_blank" href="https://plotly.com/chart-studio-help/make-a-mapbox-map/" class="list-lib-item studio">
+          <div class="item-icon">
+          </div>
+          <p class="item-language">
+            Studio
+          </p>
+        </a>
+        {% elif page.name == "3D Scatter Plots" %}
+        <a target="_blank" href="https://plotly.com/chart-studio-help/make-a-3d-scatter-plot/" class="list-lib-item studio">
+          <div class="item-icon">
+          </div>
+          <p class="item-language">
+            Studio
+          </p>
+        </a>
+        {% elif page.name == "3D Line Plots" %}
+        <a target="_blank" href="https://plotly.com/chart-studio-help/make-a-3d-line-plot/" class="list-lib-item studio">
+          <div class="item-icon">
+          </div>
+          <p class="item-language">
+            Studio
+          </p>
+        </a>
+        {% elif page.name == "3D Surface Plots" %}
+        <a target="_blank" href="https://plotly.com/chart-studio-help/make-a-3d-surface-plot/" class="list-lib-item studio">
+          <div class="item-icon">
+          </div>
+          <p class="item-language">
+            Studio
+          </p>
+        </a>
+        {% elif page.name == "3D Mesh" %}
+        <a target="_blank" href="https://plotly.com/chart-studio-help/make-a-3d-mesh-plot/" class="list-lib-item studio">
+          <div class="item-icon">
+          </div>
+          <p class="item-language">
+            Studio
+          </p>
+        </a>
+        {% elif page.name == "3D Streamtube" %}
+        <a target="_blank" href="https://plotly.com/chart-studio-help/make-a-streamtube-plot/" class="list-lib-item studio">
+          <div class="item-icon">
+          </div>
+          <p class="item-language">
+            Studio
+          </p>
+        </a>
+        {% elif page.name == "3D Cone Plots" %}
+        <a target="_blank" href="https://plotly.com/chart-studio-help/make-a-cone-plot/" class="list-lib-item studio">
+          <div class="item-icon">
+          </div>
+          <p class="item-language">
+            Studio
+          </p>
+        </a>
+
+        {% elif page.name == "Candlestick Charts" %}
+        <a target="_blank" href="https://plotly.com/chart-studio-help/make-a-candlestick/" class="list-lib-item studio">
+          <div class="item-icon">
+          </div>
+          <p class="item-language">
+            Studio
+          </p>
+        </a>
+        {% elif page.name == "OHLC Charts" %}
+        <a target="_blank" href="https://plotly.com/chart-studio-help/make-a-ohlc/" class="list-lib-item studio">
+          <div class="item-icon">
+          </div>
+          <p class="item-language">
+            Studio
+          </p>
+        </a>
+
+        {% elif page.name == "Error Bars" %}
+        <a target="_blank" href="https://plotly.com/chart-studio-help/make-a-graph-with-error-bars/" class="list-lib-item studio">
+          <div class="item-icon">
+          </div>
+          <p class="item-language">
+            Studio
+          </p>
+        </a>
+        {% elif page.name == "Ternary Plots" %}
+        <a target="_blank" href="https://plotly.com/chart-studio-help/ternary-scatter-plot/" class="list-lib-item studio">
+          <div class="item-icon">
+          </div>
+          <p class="item-language">
+            Studio
+          </p>
+        </a>
+        {% elif page.name == "Ternary Overlay " %}
+        <a target="_blank" href="https://plotly.com/chart-studio-help/ternary-filled-plot/" class="list-lib-item studio">
+          <div class="item-icon">
+          </div>
+          <p class="item-language">
+            Studio
+          </p>
+        </a>
+        {% elif page.name == "Filter" %}
+        <a target="_blank" href="https://plotly.com/chart-studio-help/filter-data/" class="list-lib-item studio">
+          <div class="item-icon">
+          </div>
+          <p class="item-language">
+            Studio
+          </p>
+        </a>
+        {% else %}
+        {% endif %}
+    </div>
+  </div>
+</div>
+{% endif %}
+-->

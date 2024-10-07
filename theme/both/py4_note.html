@@ -1,0 +1,25 @@
+{% if page.language == "python/v3" %}
+{% if  page.permalink != '/python/v3/ipython-notebooks/cufflinks/' %}
+
+<div style="margin: 20px auto; width: 75%; background: #f4f4f8; padding: 20px; font-weight: 400;
+    line-height: 1.85; text-align: center; border: 5px dashed #ab63fa;">
+	<strong>Note:</strong> this page is part of the documentation for version 3 of Plotly.py, which is <em>not the most recent version</em>.<br/>
+  See our <a href="https://plotly.com/python/v4-migration/" style="color: #2391fe">Version 4 Migration Guide</a> for information about how to upgrade.
+  {%- set page_type  = page.permalink | replace(page.language, 1) -%}
+  {%- if "javascript" in page.permalink -%}
+    {%- set page_type  = page.permalink | replace("javascript", 1) -%}
+  {%- endif -%}
+
+  {%- set allpages = config.posts -%}
+  {%- for page in allpages -%}
+    {%- if page_type in page.permalink and page.language == "python" -%}
+    <br />The version 4 version of this page is <a href="/python{{page_type}}">here</a>.
+    {%- endif -%}
+  {%- endfor -%}
+</div>
+
+{% endif %}
+{% endif %}
+
+
+

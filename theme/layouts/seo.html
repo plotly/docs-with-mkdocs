@@ -1,0 +1,67 @@
+<!-- Capture language -->
+{% set language %}{% if page.language == 'plotly_js' %}JavaScript{% elif page.language == 'ggplot2'%}ggplot2{% elif page.language == 'f_sharp' %}F#{% elif page.language == 'matlab' %}MATLAB{% else %}{{page.language | capitalize }}{% endif %}{% endset %}
+<!-- Create a title -->
+{% set title %}
+    {% if page.permalink == '/python/' or page.language == '/julia/' or page.language == '/r/' or page.language == '/ggplot2/' or page.language == '/f_sharp/' or page.language == '/matlab/' or page.language == '/javascript/' %}{{page.name}}
+    {% elif page.name == '404' %} 404 Page Not Found
+    {% elif page.permalink == '/api/' or page.permalink == '/graphing-libraries/' %} Plotly Open Source Graphing Libraries
+    {% elif page.name %} {{page.name | capitalize}} in {{language}}{% else %} Plotly Open Source Graphing Libraries{% endif %}
+{% endset %}
+<!-- Count number of plots on the page -->
+{% if page.language == 'python' %} {% set split_class = 'plotly-graph-' %}
+    {% elif page.language == 'julia' %} {% set split_class = 'plotly-graph-' %}
+    {% elif page.language == 'r' %} {% set split_class = 'plotly html-widget' %}
+    {% elif page.language == 'ggplot2' %} {% set split_class = 'plotly html-widget' %}
+    {% elif page.language == 'plotly_js' %} {% set split_class = "Plotly.newPlot('myDiv_" %}
+    {% elif page.language == 'matlab' %} {% set split_class = 'plotly-graph-' %}
+    {% elif page.language == 'f_sharp' %} {% set split_class = 'output_wrapper' %}
+    {% else %} {% set split_class = 'plotly-graph-' %}
+{% endif  %}
+
+{% set code_blocks = page.content.split('div') %}
+
+{% if page.layout == 'langindex' %}
+    {% set description %}{{page.description}}{% endset %}
+{% elif page.permalink == '/api/' or page.permalink == '/graphing-libraries/' %}
+    {% set description %}"Interactive charts and maps for Python, R, Julia, Javascript, ggplot2, F#, MATLAB®, and Dash."{% endset %}
+{% else %}
+    {% set counter = 0 %}
+    {% for code_block in code_blocks %}
+        {% if split_class in code_block %}
+            {% set counter = counter + 1 %}
+        {% endif  %}
+    {% endfor %}
+
+    {% if counter == 0 %}
+        {% set description %}{{page.description}}{% endset %}
+    {% elif counter < 8 %}
+        {% set description %}"Detailed examples of {{page.name}} including changing color, size, log axes, and more in {{language}}."{% endset %}
+    {% else %}
+        {% set description %}"Over {{counter}} examples of {{page.name}} including changing color, size, log axes, and more in {{language}}."{% endset %}
+    {% endif %}
+{% endif %}
+
+
+<!-- SEO Tags - title, meta_description -->
+<title>{{title}}</title>
+<meta name="description" content={{description}}>
+
+<!-- Bing tags -->
+    <meta name="msvalidate.01" content="D319859A832F9F1D15A7646E2A42150A" />
+<!-- Facebook tags -->
+    <meta property="og:title" content={{title}}/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content="{% if page.imageurl %}{{page.imageurl}}{% else %}{% if page.thumbnail%}{{config.imgurl}}{{page.thumbnail}}{% else%}https://help.plot.ly/images/twitter-default.png{% endif %}{% endif %}">
+    <meta property="og:description" content={{description}}/>
+    <meta property="og:url" />
+    <meta property="fb:admins" content="1123751525"/>
+    <meta property="fb:admins" content="22418"/>
+
+<!-- twitter tags -->
+    <meta name="twitter:card" content="photo" />
+    <meta name="twitter:title" content={{title}}/>
+    <meta name="twitter:url" content="{% if page.permalink %}https://plotly.com/{{page.permalink}}{% endif %}"/>
+    <meta name="twitter:description" content={{description}}/>
+    <meta name="twitter:image" content="{% if page.imageurl %}{{page.imageurl}}{% else %}{% if page.thumbnail%}{{config.imgurl}}{{page.thumbnail}}{% else%}https://help.plot.ly/images/twitter-default.png{% endif %}{% endif %}">
+    <meta name="twitter:site" content="@plotlygraphs"/>
+
