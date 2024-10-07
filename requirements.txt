@@ -1,3 +1,5 @@
+html5validator
+libsass
 mkdocs
 mkdocs-blogging-plugin
 mkdocs-rss-plugin
